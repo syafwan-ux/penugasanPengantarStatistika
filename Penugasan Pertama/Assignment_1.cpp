@@ -130,8 +130,8 @@ int main() {
     int length = sizeof(arr) / sizeof(arr[0]);
     heapSort(arr, length);
 
-    randomSampling(arr, length, 15, 500000);    //random sample for sampling 
-                                                //the following output will be created in the same directory, which is mean and std dev
+    randomSampling(arr, length, 15, 500000);   
+                                                
     string filename = "mean_results.txt";       
     string filename2 = "stddev_results.txt";
 
