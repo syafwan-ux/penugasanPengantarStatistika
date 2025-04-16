@@ -58,28 +58,28 @@ double calculateStandardDeviation(int sample[], int size, double mean) {
 }
 
 void randomSampling(int arr[], int length, int sampleSize, int numSamples) {
-    ofstream meanFile("mean_results.txt", ios::trunc); // Open in truncate mode to overwrite
-    ofstream stddevFile("stddev_results.txt", ios::trunc); // Open in truncate mode to overwrite
+    ofstream meanFile("mean_results.txt", ios::trunc); 
+    ofstream stddevFile("stddev_results.txt", ios::trunc); 
 
-    // Check if files are opened successfully
+    
     if (!meanFile.is_open() || !stddevFile.is_open()) {
         cerr << "Error opening output files!" << endl;
         return;
     }
 
-    srand(time(0)); // Seed for random number generation
+    srand(time(0)); 
 
     for (int i = 0; i < numSamples; i++) {
-        int* sample = new int[sampleSize]; // Dynamically allocate sample array
+        int* sample = new int[sampleSize]; 
         for (int j = 0; j < sampleSize; j++) {
-            int randomIndex = rand() % length; // Sampling with replacement
+            int randomIndex = rand() % length; 
             sample[j] = arr[randomIndex];
         }
         double mean = calculateMean(sample, sampleSize);
         double stddev = calculateStandardDeviation(sample, sampleSize, mean);
         meanFile << mean << ",";
         stddevFile << stddev << ",";
-        delete[] sample; // Free dynamically allocated memory
+        delete[] sample; 
     }
 
     meanFile.close();
@@ -95,7 +95,7 @@ void readDataFromFile(const string& filename, vector<int>& data) {
             stringstream ss(line);
             string value;
             while (getline(ss, value, ',')) {
-                data.push_back(stoi(value)); // Convert string to int and add to vector
+                data.push_back(stoi(value)); 
             }
         }
         file.close();
@@ -121,7 +121,7 @@ void processData(const string& filename) {
 int main() {
     int arr[] = {
         153, 157, 161, 165, 173, 164,
-        166, 165, 163, 166, 165, 171,
+        166, 165, 163, 166, 165, 171,        //data-data tinggi badan yang diberi
         169, 159, 163, 166, 165, 175,
         170, 157, 163, 166, 164, 176,
         162, 169
